@@ -2,5 +2,8 @@
   "Главная страница": "Main Page",
   "Перевод": "Translate",
   "Язык" : "English",
-  "О сайте": "About us"
+  "О сайте": "About us",
+  "Страница не найдена": "Page not found",
+  "Произошла непридвиденная ошибка": "An unexpected error has occurred",
+  "Обновить страницу": "Refresh the page"
 }
