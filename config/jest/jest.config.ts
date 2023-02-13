@@ -3,6 +3,8 @@
  * https://jestjs.io/docs/configuration
  */
 
+import path from "path";
+
 export default {
   // All imported modules in your tests should be mocked automatically
   // automock: false,
@@ -22,7 +24,7 @@ export default {
   //   "\\\\node_modules\\\\"
   // ],
   moduleDirectories: [
-    "node_modules"
+    "node_modules",
   ],
   coveragePathIgnorePatterns: [
     "\\\\node_modules\\\\"
@@ -33,14 +35,20 @@ export default {
     "ts",
     "tsx",
     "json",
-    "node"
+    "node",
   ],
   rootDir: '../../',
+  modulePaths: [
+      '<rootDir>src',
+  ],
+  setupFilesAfterEnv: ['<rootDir>config/jest/setupTests.ts'],
   testMatch: [
     '<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)'
-    // "**/__tests__/**/*.[jt]s?(x)",
-    // "**/?(*.)+(spec|test).[tj]s?(x)"
   ],
+  moduleNameMapper: {
+    '\\.(css|scss)$': 'identity-obj-proxy',
+    '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx')
+  },
   // coverageReporters: [
   //   "json",
   //   "text",
@@ -55,15 +63,6 @@ export default {
 
   // The directory where Jest should output its coverage files
   // coverageDirectory: undefined,
-
-  // An array of regexp pattern strings used to skip coverage collection
-
-
-  // Indicates which provider should be used to instrument code for coverage
-
-
-  // A list of reporter names that Jest uses when writing coverage reports
-
 
   // An object that configures minimum threshold enforcement for coverage results
   // coverageThreshold: undefined,
@@ -86,6 +85,12 @@ export default {
   // A set of global variables that need to be available in all test environments
   // globals: {},
 
+  // globals: {
+  //   "ts-jest": {
+  //     "diagnostics": false
+  //   }
+  // }
+
   // The maximum amount of workers used to run your tests. Can be specified as % or a number. E.g. maxWorkers: 10% will use 10% of your CPU amount + 1 as the maximum worker number. maxWorkers: 2 will use a maximum of 2 workers.
   // maxWorkers: "50%",
 
@@ -96,7 +101,7 @@ export default {
 
 
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
-  // moduleNameMapper: {},
+
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
   // modulePathIgnorePatterns: [],
