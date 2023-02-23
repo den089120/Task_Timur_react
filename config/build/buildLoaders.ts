@@ -1,5 +1,4 @@
 import webpack from "webpack";
-import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import {BuildOptions} from "./types/cinfig";
 import {buildCssLoader} from "./loaders/buildCssLoader";
 
